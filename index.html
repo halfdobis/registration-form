@@ -12,44 +12,42 @@
   </head>
   <body>
     
-    <form>
+    <form class="container jumbotron" name="myForm" onsubmit="return validateForm()" method="post"> 
       <div class="row">
-        <div class="col">
+        <div class="form-group col-md-6">
           <label for="inputName">First Name</label>
-          <input type="text" class="form-control" placeholder="First name">
+          <input type="text" class="form-control" placeholder="First name" name="fname">
         </div>
-        <div class="col">
+        <div class="form-group col-md-6">
           <label for="inputName">Last Name</label>
-          <input type="text" class="form-control" placeholder="Last name">
+          <input type="text" class="form-control" placeholder="Last name" name="lname">
         </div>
-      </div>
     
-      <div class="form-row">
         <div class="form-group col-md-6">
           <label for="inputEmail4">Email</label>
-          <input type="email" class="form-control" id="inputEmail4">
+          <input type="email" class="form-control" id="inputEmail4" placeholder="Email Address" name="email">
         </div>
         <div class="form-group col-md-6">
           <label for="inputPassword4">Password</label>
-          <input type="password" class="form-control" id="inputPassword4">
+          <input type="password" class="form-control" id="inputPassword4" placeholder="*******" name="password">
         </div>
       </div>
       <div class="form-group">
-        <label for="inputAddress">Address</label>
-        <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+        <label for="inputAddress">Address 1</label>
+        <input type="text" class="form-control" id="inputAddress" placeholder="House Address" name="address1">
       </div>
       <div class="form-group">
         <label for="inputAddress2">Address 2</label>
-        <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+        <input type="text" class="form-control" id="inputAddress2" placeholder="Second Address" name="address2">
       </div>
       <div class="form-row">
         <div class="form-group col-md-6">
           <label for="inputCity">City</label>
-          <input type="text" class="form-control" id="inputCity">
+          <input type="text" class="form-control" id="inputCity" placeholder="City" name="city">
         </div>
         <div class="form-group col-md-4">
           <label for="inputState">State</label>
-          <select id="inputState" class="form-control">
+          <select id="inputState" class="form-control" name="state">
             <option selected>Choose...</option>
             <option value="1">Lagos</option>
             <option value="2">Abuja</option>
@@ -59,26 +57,19 @@
         </div>
         <div class="form-group col-md-2">
           <label for="inputZip">Zip</label>
-          <input type="text" class="form-control" id="inputZip">
-        </div>
-        <div class="form-group">
-          <label for="exampleFormControlFile1">Passport Photograph</label>
-          <input type="file" class="form-control-file" id="exampleFormControlFile1">
+          <input type="text" class="form-control" id="inputZip" placeholder="00000" name="zip">
         </div>
       </div>
-      <div class="form-group">
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" id="gridCheck">
-          <label class="form-check-label" for="gridCheck">
-            Remember Me
-          </label>
+
+      <div class="row">
+        <div class="col text-center">
+          <button style="width: 100px;" type="submit" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Don't have an account">
+            Submit</button>
         </div>
       </div>
-      <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Already have an account">
-        Log In</button>
-      <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Don't have an account">
-        Submit</button>
+
     </form>
+
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -87,3 +78,94 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
   </body>
 </html>
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<script>
+function validateForm() {
+  var firstName = document.forms["myForm"]["fname"].value;
+  var lastName = document.forms["myForm"]["lname"].value;
+  var email = document.forms["myForm"]["email"].value;    
+    var password = document.forms["myForm"]["password"].value;  
+    var address1 =  document.forms["myForm"]["address1"].value;  
+    var address2 = document.forms["myForm"]["address2"].value;  
+    var city = document.forms["myForm"]["city"].value;
+    var state = document.forms["myForm"]["state"].value;
+    var zip = document.forms["myForm"]["zip"].value;
+
+  if (firstName == "") {
+    swal({
+  text: "First Name must be filled out!",
+  icon: "error",
+});
+    return false;
+  }
+
+  if (lastName == "") {
+    swal({
+  text: "Last Name must be filled out!",
+  icon: "error",
+});
+    return false;
+  }
+
+    if (email == "") {
+      swal({
+  text: "Email must be filled out!",
+  icon: "error",
+});
+    return false;
+  }
+
+  if (password == "") {
+    swal({
+  text: "Password must be filled out!",
+  icon: "error",
+});
+    return false;
+  }
+
+  if (address1 == "") {
+    swal({
+  text: "Address1 must be filled out!",
+  icon: "error",
+});
+    return false;
+  }
+
+  if (address2 == "") {
+    swal({
+  text: "Address2 must be filled out!",
+  icon: "error",
+});
+    return false;
+  }
+
+
+  if (city == "") {
+    swal({
+  text: "City must be filled out!",
+  icon: "error",
+});
+    return false;
+  }
+
+
+  if (state == "") {
+    swal({
+  text: "State must be filled out!",
+  icon: "error",
+});
+    return false;
+  }
+
+
+  if (zip == "") {
+     swal({
+  text: "Zip must be filled out!",
+  icon: "error",
+});
+    return false;
+  }
+}
+</script>
